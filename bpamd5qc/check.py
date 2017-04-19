@@ -35,7 +35,7 @@ def check_md5(md5_fname, all_md5_paths):
     with open(md5_fname) as fd:
         for md5, path in md5lines(fd):
             all_md5_paths.add(path)
-            if path == 'TestFiles.exe':
+            if path == 'TestFiles.exe' or path == 'SampleSheet.csv':
                 continue
             if not os.access(os.path.join(basedir, path), os.R_OK):
                 missing.append(path)
@@ -53,6 +53,7 @@ def check_dir(basedir, files):
         '_md5sums.txt',
         '.md5',
         '_metadata.xlsx',
+        'SampleSheet.csv',
     )
 
     def trim_dot(s):
