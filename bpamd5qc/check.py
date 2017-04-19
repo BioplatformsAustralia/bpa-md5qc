@@ -52,7 +52,7 @@ def check_dir(basedir, files):
         '_checksums.txt',
         '_md5sums.txt',
         '.md5',
-        '_metadata.xslx',
+        '_metadata.xlsx',
     )
 
     def trim_dot(s):
