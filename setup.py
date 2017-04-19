@@ -6,8 +6,8 @@ setup(author="CCG, Murdoch University",
       license="GPL3",
       keywords="",
       url="https://github.com/muccg/bpa-md5qc",
-      name="bpaingest",
-      version="1.15.1",
+      name="bpamd5qc",
+      version="0.1.0",
       packages=find_packages(exclude=["*.tests", "*.tests.*", "tests.*", "tests"]),
       entry_points={
           'console_scripts': [
