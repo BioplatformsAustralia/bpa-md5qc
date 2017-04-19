@@ -44,12 +44,15 @@ def check_md5(md5_fname, all_md5_paths):
 
 def check_dir(basedir, files):
     # files we will have generated, or the MD5 files themselves,
-    # don't need to be referenced from the MD5 file
+    # don't need to be referenced from the MD5 file. we also don't
+    # technically need the XLSX file to have a checksum (but it'd
+    # be good if it was in there.)
     extra_ignore_suffixes = (
         '.log',
         '_checksums.txt',
         '_md5sums.txt',
-        '.md5'
+        '.md5',
+        '_metadata.xslx',
     )
 
     def trim_dot(s):
