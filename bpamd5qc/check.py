@@ -106,5 +106,5 @@ def check(files):
     for md5_file in files:
         bydir[os.path.dirname(md5_file)].append(md5_file)
 
-    for basedir, dir_files in bydir.items():
+    for basedir, dir_files in sorted(bydir.items()):
         check_dir(basedir, dir_files)
