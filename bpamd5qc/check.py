@@ -43,6 +43,15 @@ def check_md5(md5_fname, all_md5_paths):
 
 
 def check_dir(basedir, files):
+    # files we will have generated, or the MD5 files themselves,
+    # don't need to be referenced from the MD5 file
+    extra_ignore_suffixes = (
+        '.log',
+        '_checksums.txt',
+        '_md5sums.txt',
+        '.md5'
+    )
+
     def trim_dot(s):
         assert(not s.startswith('../'))
         if s.startswith('./'):
@@ -61,9 +70,7 @@ def check_dir(basedir, files):
         for fname in (trim_dot(os.path.join(os.path.relpath(root, basedir), t)) for t in files):
             if fname in all_md5_paths:
                 continue
-            if fname.endswith('.md5.log') or fname.endswith('.md5') or fname.endswith('_checksums.txt') or fname.endswith('_checksums.txt.log'):
-                continue
-            if fname.endswith('.xlsx'):
+            if any(os.path.endswith(t) for t in extra_ignore_suffixes):
                 continue
             extra.append(fname)
 
