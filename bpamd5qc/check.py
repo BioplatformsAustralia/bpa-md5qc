@@ -85,7 +85,7 @@ def check_dir(basedir, files):
 
     for md5_file, missing in md5_missing.items():
         print()
-        print('### MD5 references non-existant files: %s' % (os.path.basename(md5_file)))
+        print('### MD5 references non-existent files: %s' % (os.path.basename(md5_file)))
         print()
         for path in sorted(missing):
             print(' - %s' % path)
