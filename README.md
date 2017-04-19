@@ -10,7 +10,7 @@ Intended for use on a flat-file archive.
 Usage:
 
 ```
-/mnt/Q0185/marine_microbes/raw$ find . -name "*.md5" -print  | xargs bpa-md5qc
+/mnt/Q0185/marine_microbes/raw$ find . -name "*.md5" -print0 | xargs -0 bpa-md5qc
 ```
 
 
