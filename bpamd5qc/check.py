@@ -43,6 +43,12 @@ def check_md5(md5_fname, all_md5_paths):
 
 
 def check_dir(basedir, files):
+    def trim_dot(s):
+        assert(not s.startswith('../'))
+        if s.startswith('./'):
+            return s[2:]
+        return s
+
     all_md5_paths = set()
     md5_missing = {}
     for md5_file in files:
@@ -52,7 +58,7 @@ def check_dir(basedir, files):
 
     extra = []
     for root, dirs, files in os.walk(basedir):
-        for fname in (os.path.relpath(t, basedir) for t in files):
+        for fname in (trim_dot(os.path.join(os.path.relpath(root, basedir), t)) for t in files):
             if fname in all_md5_paths:
                 continue
             if fname.endswith('.md5.log') or fname.endswith('.md5') or fname.endswith('_checksums.txt') or fname.endswith('_checksums.txt.log'):
