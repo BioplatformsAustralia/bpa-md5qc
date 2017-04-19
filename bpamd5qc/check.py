@@ -70,7 +70,7 @@ def check_dir(basedir, files):
         for fname in (trim_dot(os.path.join(os.path.relpath(root, basedir), t)) for t in files):
             if fname in all_md5_paths:
                 continue
-            if any(os.path.endswith(t) for t in extra_ignore_suffixes):
+            if any(fname.endswith(t) for t in extra_ignore_suffixes):
                 continue
             extra.append(fname)
 
